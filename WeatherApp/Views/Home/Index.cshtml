@@ -1,0 +1,47 @@
+﻿@using System.Globalization
+@model WeatherApp.ViewModels.MainIndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+<link href="css/home.css" type="text/css" rel="stylesheet"/>
+<div>
+    <div class="header-div">
+        @if (Model.Location == null || Model.Weather == null || !Model.Location.IsSuccess || !Model.Weather.IsSuccess)
+        {
+            <h1>Oh... Sorry... Try to reload page</h1>
+        }
+        else
+        {
+            <div>
+                <h1>Weather in: <a>@Model.Location?.City</a></h1>
+                <input disabled type="text"/>
+            </div>
+            <table>
+                <tr>
+                    <th>
+                        <h2 class="inline-data">Temperature</h2>
+                    </th>
+                    <th>
+                        <h2 class="inline-data">Humidity</h2>
+                    </th>
+                    <th>
+                        <h2 class="inline-data">Weather</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <h2 id="temp" class="inline-data">@Model.Weather?.Main?.Temp.ToString()℃</h2>
+                    </th>
+                    <th>
+                        <h2 id="hum" class="inline-data">@Model.Weather?.Main?.Humidity.ToString()%</h2>
+                    </th>
+                    <th>
+                        <h2 id="type" class="inline-data">@Model.Weather?.Weather?[0].Main</h2>
+                    </th>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
