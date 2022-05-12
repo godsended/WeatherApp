@@ -6,7 +6,7 @@ namespace WeatherApp.Services;
 
 public class WeatherService : IWeatherService
 {
-    private const string ApiKey = "eb98f11c11e64fe428ddeb4026a7631f";
+    private const string ApiKey = "API_KEY HERE";
     private readonly HttpClient httpClient;
 
     public WeatherService(HttpClient httpClient)
